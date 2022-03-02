@@ -1,7 +1,10 @@
 from py4j.java_gateway import JavaGateway
 import sys
+import os
 
-gateway = JavaGateway.launch_gateway(classpath="/Users/tomyaacov/university/BPjsPythonWrapper/BPjs-0.12.2.uber.jar",
+dir_path = os.path.dirname(os.path.realpath(__file__))
+
+gateway = JavaGateway.launch_gateway(classpath=os.path.join(dir_path, "BPjs-0.12.2.uber.jar"),
                                      die_on_exit=True,
                                      redirect_stdout=sys.stdout)
 
