@@ -1,6 +1,7 @@
 from py4j.java_gateway import JavaGateway
 import sys
 import os
+from dfs_bprogram import DFSBProgram
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
@@ -8,10 +9,9 @@ gateway = JavaGateway.launch_gateway(classpath=os.path.join(dir_path, "BPjs-0.12
                                      die_on_exit=True,
                                      redirect_stdout=sys.stdout)
 
-with open("hello_world.js", "r") as f:
+with open("hot_cold.js", "r") as f:
     bprog = gateway.jvm.il.ac.bgu.cs.bp.bpjs.model.StringBProgram("my_bprogram", f.read())
 
-runner = gateway.jvm.il.ac.bgu.cs.bp.bpjs.execution.BProgramRunner(bprog)
-runner.addListener(gateway.jvm.il.ac.bgu.cs.bp.bpjs.execution.listeners.PrintBProgramRunnerListener())
-runner.run()
-
+dfs = DFSBProgram(gateway, bprog)
+init, states = dfs.run()
+DFSBProgram.save_graph(init, states, "graph.dot")
