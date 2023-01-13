@@ -8,7 +8,7 @@ gateway = JavaGateway.launch_gateway(classpath=os.path.join(dir_path, "BPjs-0.12
                                      die_on_exit=True,
                                      redirect_stdout=sys.stdout)
 
-with open("hello_world.js", "r") as f:
+with open("sokoban_2.js", "r") as f:
     bprog = gateway.jvm.il.ac.bgu.cs.bp.bpjs.model.StringBProgram("my_bprogram", f.read())
 
 runner = gateway.jvm.il.ac.bgu.cs.bp.bpjs.execution.BProgramRunner(bprog)
