@@ -1,7 +1,7 @@
 # BPjsPythonWrapper
 Experimenting Python wrapping options for BPjs 
 
-<b>Note: I'm using Python 3.7.4</b>
+<b>Note: I used Python 3.7.4</b>
 
 ## Prerequisites
 Java (I'm using 11.0.8)
